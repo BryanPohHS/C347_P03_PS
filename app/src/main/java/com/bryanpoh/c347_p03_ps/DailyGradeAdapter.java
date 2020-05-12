@@ -18,6 +18,7 @@ public class DailyGradeAdapter extends ArrayAdapter<DailyGrade> {
     private ArrayList<DailyGrade> grade;
     private Context context;
     private TextView tvGrade, tvWeek;
+    private ImageView imgView;
 
     public DailyGradeAdapter(Context context, int resource, ArrayList<DailyGrade> objects){
         super(context, resource, objects);
@@ -39,6 +40,8 @@ public class DailyGradeAdapter extends ArrayAdapter<DailyGrade> {
         // Get the tv object
         tvGrade = rowView.findViewById(R.id.textViewGrade);
         tvWeek = rowView.findViewById(R.id.tvWeek);
+        imgView = rowView.findViewById(R.id.imageView);
+        imgView.setImageResource(R.drawable.dg);
 
         // position = index of row that lv is requesting. Get food at same index
         DailyGrade currGrade = grade.get(position);

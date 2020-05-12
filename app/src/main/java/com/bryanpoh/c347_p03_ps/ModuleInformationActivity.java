@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +25,7 @@ public class ModuleInformationActivity extends AppCompatActivity {
     ArrayAdapter aa;
 
     Button btnInfo, btnAdd, btnEmail;
-
-
-    static final int PICKUP_CONFIRM_RECIEVED = 2;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

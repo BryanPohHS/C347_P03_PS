@@ -1,10 +1,12 @@
 package com.bryanpoh.c347_p03_ps;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,10 +18,9 @@ import java.util.ArrayList;
 
 public class AddDataActivity extends AppCompatActivity {
     TextView tvWeek;
-
     Button btnSubmit;
-
     RadioGroup radioGroup;
+    ImageView imgView;
 
     private int WEEK_NUMBER;
 
@@ -31,6 +32,10 @@ public class AddDataActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.buttonSubmit);
         tvWeek = findViewById(R.id.tvWeek);
         radioGroup = findViewById(R.id.radioGroup);
+        imgView = findViewById(R.id.imageView);
+
+        // Set image
+        imgView.setImageResource(R.drawable.dg);
 
         // Get intent for week number and set to title & textview
         Intent i = getIntent();
