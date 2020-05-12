@@ -25,11 +25,15 @@ public class ModuleInformationActivity extends AppCompatActivity {
     ArrayAdapter aa;
 
     Button btnInfo, btnAdd, btnEmail;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module_information);
+
+        Intent i = getIntent();
+        final String moduleCode = i.getStringExtra("moduleCode");
+        setTitle("Info for " + moduleCode);
 
         lv = findViewById(R.id.listViewWeekly);
         tvGrade = findViewById(R.id.textViewGrade);
@@ -46,8 +50,16 @@ public class ModuleInformationActivity extends AppCompatActivity {
                 // Intent to display data
                 Intent rpIntent = new Intent(Intent.ACTION_VIEW);
                 // Set the URL to be used.
-                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
-                startActivity(rpIntent);
+
+                if(moduleCode.equals("C347")){
+                    rpIntent.setData(Uri.parse("https://www.rp.edu.sg/schools-courses/courses/full-time-diplomas/full-time-courses/modules/index/C347"));
+                    startActivity(rpIntent);
+                } else {
+                    rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
+                    startActivity(rpIntent);
+                }
+
+
             }
         });
 
@@ -99,15 +111,19 @@ public class ModuleInformationActivity extends AppCompatActivity {
 
 
 
-        Intent i = getIntent();
-        String moduleCode = i.getStringExtra("moduleCode");
-        setTitle("Info for " + moduleCode);
+
 
         dailyGrade = new ArrayList<DailyGrade>();
+        String c302 = "C302";
 
-        dailyGrade.add(new DailyGrade("C", "Week 1"));
-        dailyGrade.add(new DailyGrade("A", "Week 2"));
-        dailyGrade.add(new DailyGrade("B", "Week 3"));
+        if(moduleCode.equals(c302)){
+            dailyGrade.add(new DailyGrade("C", "Week 1"));
+            dailyGrade.add(new DailyGrade("A", "Week 2"));
+        } else {
+            dailyGrade.add(new DailyGrade("F", "Week 1"));
+            dailyGrade.add(new DailyGrade("F", "Week 2"));
+        }
+
 
         aa = new DailyGradeAdapter(this, R.layout.weekly_row, dailyGrade);
         lv.setAdapter(aa);
